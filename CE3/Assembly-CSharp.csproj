@@ -64,7 +64,6 @@
     <Compile Include="Assets\Scripts\ExitButton.cs" />
     <Compile Include="Assets\Scripts\MusicButton.cs" />
     <Compile Include="Assets\Scripts\SetInput.cs" />
-    <Compile Include="Assets\Scripts\Liner.cs" />
     <Compile Include="Assets\Scripts\StartButton.cs" />
     <Compile Include="Assets\Scripts\LineSCR.cs" />
     <Compile Include="Assets\Scripts\ChartCalculator.cs" />

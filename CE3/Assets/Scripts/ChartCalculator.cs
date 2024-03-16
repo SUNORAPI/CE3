@@ -11,15 +11,13 @@ public class ChartCalculator : MonoBehaviour
     float NoteTime;
     float MPM;//Measure Per Minute
     int MeasureNumber;//è¨êﬂÇÃêî
-    int LPB;
     public static int LineNumber;
 
     void Start()
     {
-        TPB = 60000 / SetInput.BPM;
-        MPM = SetInput.BPM / SetInput.BeatPerMeasure;
-        MeasureNumber = Mathf.CeilToInt(MPM * SetInput.MusicTime) + 1;
-        LineNumber = MeasureNumber * SetInput.BeatPerMeasure * LPB;
-        TPL = TPB / LPB;
+        TPB = 60 / SetInput.BPM;
+        TPL = TPB / SetInput.LPB;
+        LineNumber = Mathf.CeilToInt( SetInput.BPM * SetInput.LPB * SetInput.MusicTime)+1;
+        Debug.Log(" TPB:" + TPB + " MPM:" + MPM + " MNum:" + MeasureNumber + " LNum:" + LineNumber + " TPL:" + TPL);
     }
 }
