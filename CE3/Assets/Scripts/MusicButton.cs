@@ -13,11 +13,14 @@ public class MusicButton : MonoBehaviour
     float Length;
     public static float SliderValue;
     public static float NowMusicTime;
-    public static int BposX;
-    public static int BposY;
+    [SerializeField]public GameObject K;
+    LineSCR L;
+    private int _BX;
+    private int _BY;
     private void Start()
     {
         Length = audioSource.clip.length;
+        L=K.GetComponent<LineSCR>();
     }
 
     public void MusicStart()
@@ -61,13 +64,18 @@ public class MusicButton : MonoBehaviour
     {
         audioSource.time -= 5 * ChartCalculator.TPL;
     }
-    public void NotesBX(int BX) 
+    public void NBX(int X)
     {
-        BposX = BX; 
+        _BX = X;
     }
-    public void NotesBY(int BY)
+    public void NBY(int Y)
     {
-        BposY = BY;
+        _BY = Y;
+    }
+    public void NotesBV2() 
+    {
+        Vector2 BV2 = new Vector2(_BX,_BY);
+        L.AddN(BV2);
     }
 
     private void Update()
