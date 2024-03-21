@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class MusicButton : MonoBehaviour
 {
+    [SerializeField] public GameObject M1;
+    [SerializeField] public GameObject M5;
     public AudioSource audioSource;
     public Slider slider;
     public TextMeshProUGUI PauseBT;
@@ -17,6 +19,7 @@ public class MusicButton : MonoBehaviour
     LineSCR L;
     private int _BX;
     private int _BY;
+    public static int NNUM;
     private void Start()
     {
         Length = audioSource.clip.length;
@@ -58,11 +61,17 @@ public class MusicButton : MonoBehaviour
     }
     public void StepM1()
     {
-        audioSource.time -= ChartCalculator.TPL;
+        if (NNUM >= 1)
+        {
+            audioSource.time -= ChartCalculator.TPL;
+        }
     }
     public void StepM5()
     {
-        audioSource.time -= 5 * ChartCalculator.TPL;
+        if (NNUM >= 5)
+        {
+            audioSource.time -= 5 * ChartCalculator.TPL;
+        }
     }
     public void NBX(int X)
     {
@@ -83,6 +92,22 @@ public class MusicButton : MonoBehaviour
         NowMusicTime = audioSource.time;
         slider.value = audioSource.time / Length;
         SliderValue = slider.value;
+        if (NNUM >= 1) 
+        {
+            M1.SetActive(true);
+            if (NNUM >= 5)
+            {
+                M5.SetActive(true);
+            }
+            else
+            {
+                M5.SetActive(false);
+            }
+        }
+        else
+        {
+            M1.SetActive(false);
+        }
     }
 
     public void sliderchanged()

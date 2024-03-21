@@ -41,6 +41,7 @@ public class LineSCR : MonoBehaviour
 
     private void Update()
     {
+        MusicButton.NNUM = _NowNum0;
         for(int i = 0; i < 9; i++)
         {
             _LineNum[i] = _NowNum0 + i;
