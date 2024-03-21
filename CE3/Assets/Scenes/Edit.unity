@@ -1967,7 +1967,7 @@ RectTransform:
   - {fileID: 592281133}
   - {fileID: 417705282}
   - {fileID: 2025883380}
-  - {fileID: 2056499828}
+  - {fileID: 328784991}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2688,7 +2688,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4180,14 +4180,6 @@ Transform:
   - {fileID: 1774557663}
   - {fileID: 433045674}
   - {fileID: 2095557497}
-  - {fileID: 770563023}
-  - {fileID: 1175591209}
-  - {fileID: 65416663}
-  - {fileID: 636389030}
-  - {fileID: 1474793083}
-  - {fileID: 677227928}
-  - {fileID: 90466656}
-  - {fileID: 1538599387}
   - {fileID: 1495088614}
   - {fileID: 2022315180}
   - {fileID: 989417583}
@@ -4202,6 +4194,7 @@ Transform:
   - {fileID: 1303003739}
   - {fileID: 1604508974}
   - {fileID: 1645969895}
+  - {fileID: 770563023}
   - {fileID: 2131285413}
   - {fileID: 1101690398}
   - {fileID: 145138765}
@@ -4216,6 +4209,7 @@ Transform:
   - {fileID: 384548955}
   - {fileID: 470929795}
   - {fileID: 115270335}
+  - {fileID: 1175591209}
   - {fileID: 631100155}
   - {fileID: 123839033}
   - {fileID: 362938002}
@@ -4230,6 +4224,7 @@ Transform:
   - {fileID: 644386038}
   - {fileID: 1502909766}
   - {fileID: 85822225}
+  - {fileID: 65416663}
   - {fileID: 125784645}
   - {fileID: 667617556}
   - {fileID: 499659694}
@@ -4244,6 +4239,7 @@ Transform:
   - {fileID: 577625436}
   - {fileID: 1017591656}
   - {fileID: 728738913}
+  - {fileID: 636389030}
   - {fileID: 1576403554}
   - {fileID: 1532539282}
   - {fileID: 655759660}
@@ -4258,6 +4254,7 @@ Transform:
   - {fileID: 406216330}
   - {fileID: 629251078}
   - {fileID: 1099761566}
+  - {fileID: 1474793083}
   - {fileID: 1234807140}
   - {fileID: 1944702065}
   - {fileID: 1999792979}
@@ -4272,6 +4269,7 @@ Transform:
   - {fileID: 1561943558}
   - {fileID: 1783650143}
   - {fileID: 1631816864}
+  - {fileID: 677227928}
   - {fileID: 831933966}
   - {fileID: 2120823548}
   - {fileID: 6385463}
@@ -4286,6 +4284,7 @@ Transform:
   - {fileID: 1902726778}
   - {fileID: 1239779797}
   - {fileID: 1716047229}
+  - {fileID: 90466656}
   - {fileID: 528954096}
   - {fileID: 27734652}
   - {fileID: 932385324}
@@ -4300,6 +4299,7 @@ Transform:
   - {fileID: 157775857}
   - {fileID: 123058449}
   - {fileID: 1016724749}
+  - {fileID: 1538599387}
   m_Father: {fileID: 110848820}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &303207005
@@ -4458,6 +4458,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 303207005}
   m_CullTransparentMesh: 1
+--- !u!1 &328784990
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 328784991}
+  m_Layer: 0
+  m_Name: Notes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &328784991
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328784990}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -80, y: 0, z: 0}
+  m_LocalScale: {x: 0.75, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 110848820}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &330371741
 GameObject:
   m_ObjectHideFlags: 0
@@ -7636,7 +7667,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -8798,7 +8829,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -11787,7 +11818,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -16659,7 +16690,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -20145,7 +20176,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -21549,7 +21580,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -21802,7 +21833,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NPrefab: {fileID: 9035414392142133209, guid: 6387a31f9e05db64491169179e78a635, type: 3}
-  P: {fileID: 110848816}
+  P: {fileID: 328784990}
 --- !u!1 &1578958527
 GameObject:
   m_ObjectHideFlags: 0
@@ -26988,41 +27019,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2052365433}
   m_CullTransparentMesh: 1
---- !u!1 &2056499827
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2056499828}
-  m_Layer: 0
-  m_Name: Notes
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &2056499828
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2056499827}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 110848820}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2064344037
 GameObject:
   m_ObjectHideFlags: 0
@@ -28188,7 +28184,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

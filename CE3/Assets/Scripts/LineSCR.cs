@@ -11,6 +11,7 @@ using System;
 using System.Linq;
 using UnityEditor.Experimental.GraphView;
 using static UnityEditor.PlayerSettings;
+using UnityEditorInternal;
 
 class Note
 {
@@ -22,7 +23,8 @@ class Note
 
 public class LineSCR : MonoBehaviour
 {
-    public static int[] LinePos = new[] { -200, -150, -100, -50, 0, 50, 100, 150, 200 };
+    public static int[] LinePosY = new[] { -200, -150, -100, -50, 0, 50, 100, 150, 200 };
+    public static int[] LinePosX = new[] {-382 ,-335, -288, -241, -194, -147, -100, -53, -6, 41, 88, 135, 182, 229, 276, 323};
     private int _NowNum0;
     private int _LaneNum;
     private int _NoteLength;
@@ -45,15 +47,15 @@ public class LineSCR : MonoBehaviour
         }
         _NowNum0 = (int)Mathf.Floor(MusicButton.NowMusicTime/ChartCalculator.TPL);
         var VNL = NoteList.Where( note => note.NoteY >= _NowNum0 && note.NoteY <= _NowNum0 +8).ToList();//表示するノーツのリスト
+        var NonVNL = NoteList.Where( note => note.NoteY < _NowNum0 || note.NoteY > _NowNum0 +8).ToList();//表示しないノーツのリスト
         foreach (var note in VNL)
         {
-            float posX = -382 + note.NoteX * 47;
-            float posY = LinePos[note.NoteY - _NowNum0];
+            float posX = LinePosX[note.NoteX];
+            float posY = LinePosY[note.NoteY - _NowNum0];
             Vector2 pos = new Vector2(posX, posY);
             Draw(pos, note.NObj);
         }
     }
-
     void Draw(Vector2 VNL_Pos,UnityEngine.UI.Image NO)
     {
         NO.rectTransform.anchoredPosition = VNL_Pos;
@@ -61,11 +63,12 @@ public class LineSCR : MonoBehaviour
     }
     public void AddN(Vector2 V)
     {
-        float posX = -382 + V.x * 47;
-        float posY = LinePos[(int)V.y];
+        float posX = LinePosX[(int)V.x];
+        float posY = LinePosY[(int)V.y];
         Vector2 pos = new Vector2(posX, posY);
         UnityEngine.UI.Image Obj = Instantiate(NPrefab, pos, Quaternion.identity);
-        Obj.transform.SetParent(P.transform);
-        NoteList.Add(new Note { NoteX = (int)V.y, NoteY = (int)V.y + _NowNum0, NObj = Obj});
+        Obj.rectTransform.SetParent(P.transform, false);
+        Obj.rectTransform.anchoredPosition = pos;
+        NoteList.Add(new Note { NoteX = (int)V.x, NoteY = (int)V.y + _NowNum0, NObj = Obj});
     }
 }
