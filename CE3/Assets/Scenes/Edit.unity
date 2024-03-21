@@ -21804,6 +21804,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95e7e74ffb4b8ae46b5c8ae792304075, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  M1: {fileID: 350386072}
+  M5: {fileID: 980738654}
   audioSource: {fileID: 1578274326}
   slider: {fileID: 1057049312}
   PauseBT: {fileID: 146999059}
