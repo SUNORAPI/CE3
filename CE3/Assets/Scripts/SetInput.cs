@@ -14,6 +14,7 @@ public class SetInput : MonoBehaviour
     public TMP_InputField ChartMakerI;
     public TMP_InputField MusicTimeI;//ã»ÇÃénÇﬂÇ©ÇÁèIÇÌÇËÇ‹Ç≈ÇÃéûä‘
     public TMP_InputField LPBI;
+    public TMP_InputField TitleI;
 
     public TextMeshProUGUI PathText;
     public TextMeshProUGUI BPMText;
@@ -23,6 +24,7 @@ public class SetInput : MonoBehaviour
     public TextMeshProUGUI ChartMakerText;
     public TextMeshProUGUI MusicTimeText;
     public TextMeshProUGUI LPBText;
+    public TextMeshProUGUI TItleText;
 
     public static string Path = "C:/Users/hoday/Downloads/168_HammerGirl.mp3";
     public static float BPM = 168.0f;
@@ -32,6 +34,7 @@ public class SetInput : MonoBehaviour
     public static string ChartMaker = "SUNORAPI";
     public static float MusicTime = 3.7f;
     public static int LPB = 4;
+    public static string Title = "HammerGirl";
     void Start()
     {
         PathI = PathI.GetComponent<TMP_InputField>();

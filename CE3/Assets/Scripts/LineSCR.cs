@@ -13,6 +13,20 @@ using UnityEditor.Experimental.GraphView;
 using static UnityEditor.PlayerSettings;
 using UnityEditorInternal;
 
+class Chart
+{
+    public string Title;
+    public string Composer;
+    public string ChartMaker;
+    public float BPM;
+    public int Level;
+    public List<Note> Notes;
+}
+class SaveNote
+{
+    public int SNX;
+    public float SNY;
+}
 class Note
 {
     public int NoteX;
@@ -31,12 +45,13 @@ public class LineSCR : MonoBehaviour
     private int _NoteType;
     private int[] _LineNum = new int[9];
     List<Note> NoteList = new List<Note>();
+    List<SaveNote> SaveNoteList = new List<SaveNote>();
     private List<Vector2> VNL_Pos = new List<Vector2>();
     public UnityEngine.UI.Image NPrefab;
     public GameObject P;
     private void Start()
     {
-        
+           
     }
 
     private void Update()
@@ -71,5 +86,15 @@ public class LineSCR : MonoBehaviour
         Obj.rectTransform.SetParent(P.transform, false);
         Obj.rectTransform.anchoredPosition = pos;
         NoteList.Add(new Note { NoteX = (int)V.x, NoteY = (int)V.y + _NowNum0, NObj = Obj});
+        SaveNoteList.Add(new SaveNote { SNX = (int)V.x, SNY = ((int)V.y + _NowNum0) * ChartCalculator.TPL });
+    }
+    void Save()
+    {
+        Chart chart = new Chart();
+        chart.Title = SetInput.Title;
+        chart.Composer = SetInput.Composer;
+        chart.ChartMaker = SetInput.ChartMaker;
+        chart.BPM = SetInput.BPM;
+        chart.Level = SetInput.Level;
     }
 }
