@@ -1,0 +1,29 @@
+{
+  "Title": "HammerGirl",
+  "Composer": "SUNORAPI",
+  "ChartMaker": "SUNORAPI",
+  "BPM": 168.0,
+  "Level": 1,
+  "Notes": [
+    {
+      "SNX": 14,
+      "SNY": 0.625
+    },
+    {
+      "SNX": 7,
+      "SNY": 0.3571428656578064
+    },
+    {
+      "SNX": 5,
+      "SNY": 0.625
+    },
+    {
+      "SNX": 12,
+      "SNY": 0.3571428656578064
+    },
+    {
+      "SNX": 8,
+      "SNY": 0.0892857164144516
+    }
+  ]
+}

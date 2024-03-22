@@ -22,9 +22,10 @@ public class Chart
     public string ChartMaker;
     public float BPM;
     public int Level;
-    List<Note> Notes;
+    public List<SaveNote> Notes;
 }
-class SaveNote
+[System.Serializable]
+public class SaveNote
 {
     public int SNX;
     public float SNY;
@@ -60,6 +61,10 @@ public class LineSCR : MonoBehaviour
         if (!File.Exists(filepath))
         {
             Init();
+        }
+        else
+        {
+            Debug.Log("Succes S02: Find the json file. path: "+ filepath);
         }
     }
 
@@ -97,9 +102,23 @@ public class LineSCR : MonoBehaviour
         NoteList.Add(new Note { NoteX = (int)V.x, NoteY = (int)V.y + _NowNum0, NObj = Obj});
         SaveNoteList.Add(new SaveNote { SNX = (int)V.x, SNY = ((int)V.y + _NowNum0) * ChartCalculator.TPL });
     }
-    void Save()
+    void Save(List<SaveNote> Nls)
     {
-
+        data.Title = SetInput.Title;
+        data.Composer = SetInput.Composer;
+        data.ChartMaker = SetInput.ChartMaker;
+        data.BPM = SetInput.BPM;
+        data.Level = SetInput.Level;
+        if (Nls != null)
+        {
+            data.Notes = Nls;
+        }
+        string json = JsonUtility.ToJson(data);
+        using (StreamWriter Swr = new StreamWriter(filepath, false))
+        {
+            Swr.WriteLine(json);
+            Debug.Log("Succes S03: Saved chart on the json file.");
+        }
     }
     void Init()
     {
@@ -114,9 +133,10 @@ public class LineSCR : MonoBehaviour
         {
             Swr.WriteLine(json);
         }
-        //StreamWriter Swr = new StreamWriter(filepath,false);
-        //Swr.WriteAsync(json);
-        //Swr.Close();
-        Debug.Log("Succes to Init. path: " +  filepath);
+        Debug.Log("Succes S01: Inited the json file. path: " +  filepath);
+    }
+    public void Savebtn()
+    {
+        Save(SaveNoteList);
     }
 }

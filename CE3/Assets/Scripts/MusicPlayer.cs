@@ -43,7 +43,7 @@ public class MusicPlayer : MonoBehaviour
                 yield break;
             }
             audioSource.clip = audioClip;
-            Debug.Log("Success to Load Audio. path: " + Path);
+            Debug.Log("Succes A01: Succes to Load Audio. path: " + Path);
         }
     }
 }
