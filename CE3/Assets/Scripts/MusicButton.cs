@@ -107,6 +107,7 @@ public class MusicButton : MonoBehaviour
         else
         {
             M1.SetActive(false);
+            M5.SetActive(false);
         }
     }
 

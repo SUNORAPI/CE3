@@ -12,15 +12,17 @@ using System.Linq;
 using UnityEditor.Experimental.GraphView;
 using static UnityEditor.PlayerSettings;
 using UnityEditorInternal;
+using System.IO;
 
-class Chart
+[System.Serializable]
+public class Chart
 {
     public string Title;
     public string Composer;
     public string ChartMaker;
     public float BPM;
     public int Level;
-    public List<Note> Notes;
+    List<Note> Notes;
 }
 class SaveNote
 {
@@ -49,9 +51,16 @@ public class LineSCR : MonoBehaviour
     private List<Vector2> VNL_Pos = new List<Vector2>();
     public UnityEngine.UI.Image NPrefab;
     public GameObject P;
-    private void Start()
+    string filepath;
+    public Chart data;
+    private void Awake()
     {
-           
+        Debug.Log("LineSCR.cs awaked.");
+        filepath = Application.dataPath + "/" + SetInput.Title + ".json"; //JSONのファイルパス
+        if (!File.Exists(filepath))
+        {
+            Init();
+        }
     }
 
     private void Update()
@@ -90,11 +99,24 @@ public class LineSCR : MonoBehaviour
     }
     void Save()
     {
-        Chart chart = new Chart();
-        chart.Title = SetInput.Title;
-        chart.Composer = SetInput.Composer;
-        chart.ChartMaker = SetInput.ChartMaker;
-        chart.BPM = SetInput.BPM;
-        chart.Level = SetInput.Level;
+
+    }
+    void Init()
+    {
+        data.Title = SetInput.Title;
+        data.Composer = SetInput.Composer;
+        data.ChartMaker = SetInput.ChartMaker;
+        data.BPM = SetInput.BPM;
+        data.Level = SetInput.Level;
+        string json = JsonUtility.ToJson(data);
+        Debug.Log(json);
+        using (StreamWriter Swr = new StreamWriter(filepath, false))
+        {
+            Swr.WriteLine(json);
+        }
+        //StreamWriter Swr = new StreamWriter(filepath,false);
+        //Swr.WriteAsync(json);
+        //Swr.Close();
+        Debug.Log("Succes to Init. path: " +  filepath);
     }
 }

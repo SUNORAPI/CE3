@@ -14,7 +14,7 @@ public class MusicPlayer : MonoBehaviour
     {
         if (Path.GetExtension(MPath) == ".m4a")
         {
-            Debug.Log("Error 01: .m4a audio format is not supported.");
+            Debug.Log("Error A01: .m4a audio format is not supported.");
         }
         else 
         {
@@ -29,7 +29,7 @@ public class MusicPlayer : MonoBehaviour
         }
         if (!File.Exists(Path))
         {
-            Debug.Log("Error 02: File not found.");
+            Debug.Log("Error A02: File not found.");
             yield break;
         }
         using(WWW www = new WWW("file://" + Path))
@@ -39,11 +39,11 @@ public class MusicPlayer : MonoBehaviour
             AudioClip audioClip = www.GetAudioClip(false, true);
             if(audioClip.loadState != AudioDataLoadState.Loaded)
             {
-                Debug.Log("Error 03: Failed to load AudioClip.");
+                Debug.Log("Error A03: Failed to load AudioClip.");
                 yield break;
             }
             audioSource.clip = audioClip;
-            Debug.Log("Success to Load: " + Path);
+            Debug.Log("Success to Load Audio. path: " + Path);
         }
     }
 }

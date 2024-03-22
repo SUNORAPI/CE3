@@ -18,6 +18,5 @@ public class ChartCalculator : MonoBehaviour
         TPB = 60 / SetInput.BPM;
         TPL = TPB / SetInput.LPB;
         LineNumber = Mathf.CeilToInt( SetInput.BPM * SetInput.LPB * SetInput.MusicTime)+1;
-        Debug.Log(" TPB:" + TPB + " MPM:" + MPM + " MNum:" + MeasureNumber + " LNum:" + LineNumber + " TPL:" + TPL);
     }
 }
