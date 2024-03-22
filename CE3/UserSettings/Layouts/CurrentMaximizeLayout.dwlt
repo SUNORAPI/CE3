@@ -543,9 +543,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 134.53323, y: 113.15648, z: 3.4886432}
+    m_Target: {x: 88.206985, y: 55.349957, z: -0.4898647}
     speed: 2
-    m_Value: {x: 134.53323, y: 113.15648, z: 3.4886432}
+    m_Value: {x: 88.206985, y: 55.349957, z: -0.4898647}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -595,9 +595,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 75.94047
+    m_Target: 83.469345
     speed: 2
-    m_Value: 75.94047
+    m_Value: 83.469345
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -785,24 +785,24 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 36690000
-    m_LastClickedID: 26934
+    scrollPos: {x: 0, y: 71.499756}
+    m_SelectedIDs: d4f4ffff
+    m_LastClickedID: 0
     m_ExpandedIDs: ffffffff00000000ee680000f0680000f2680000f4680000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: LineSCR
-      m_OriginalName: LineSCR
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 23598
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 8}
     m_SearchString: 
@@ -813,8 +813,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 36690000
-    m_LastClickedInstanceID: 26934
+    m_SelectedInstanceIDs: d4f4ffff
+    m_LastClickedInstanceID: -2860
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
@@ -869,7 +869,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 150}
   m_MaxSize: {x: 8096, y: 24288}
   vertical: 1
-  controlID: 109
+  controlID: 83
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -937,7 +937,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 0
+  m_LastVerticalScrollValue: 770
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
@@ -1006,9 +1006,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 36690000
-      m_LastClickedID: 0
-      m_ExpandedIDs: 0af0fffff0f1ffff16fbffff
+      m_SelectedIDs: d4f4ffff
+      m_LastClickedID: -2860
+      m_ExpandedIDs: d2f8ffff16fbffff9861000030620000fa690000606a0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1051,8 +1051,8 @@ MonoBehaviour:
     y: 608.8
     width: 460.80005
     height: 114
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 101, y: 121}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}

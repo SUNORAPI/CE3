@@ -118,4 +118,12 @@ public class SetInput : MonoBehaviour
             LPB = int.Parse(LPBI.text.ToString());
         }
     }
+    public void InputTitle()
+    {
+        if (!string.IsNullOrEmpty(TitleI.text))
+        {
+            TItleText.text = TitleI.text;
+            Title = TitleI.text.ToString();
+        }
+    }
 }
