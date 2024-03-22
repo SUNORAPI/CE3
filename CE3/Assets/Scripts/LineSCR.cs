@@ -13,6 +13,7 @@ using UnityEditor.Experimental.GraphView;
 using static UnityEditor.PlayerSettings;
 using UnityEditorInternal;
 using System.IO;
+using JetBrains.Annotations;
 
 [System.Serializable]
 public class Chart
@@ -27,6 +28,7 @@ public class Chart
 [System.Serializable]
 public class SaveNote
 {
+    public int SNM;
     public int SNX;
     public float SNY;
 }
@@ -34,6 +36,7 @@ class Note
 {
     public int NoteX;
     public int NoteY;
+    public int NoteMode;
     public UnityEngine.UI.Image NObj;
 }
 
@@ -42,11 +45,13 @@ public class LineSCR : MonoBehaviour
 {
     public static int[] LinePosY = new[] { -200, -150, -100, -50, 0, 50, 100, 150, 200 };
     public static int[] LinePosX = new[] {-382 ,-335, -288, -241, -194, -147, -100, -53, -6, 41, 88, 135, 182, 229, 276, 323};
+    public static int Notesmode;
     private int _NowNum0;
     private int _LaneNum;
     private int _NoteLength;
     private int _NoteType;
     private int[] _LineNum = new int[9];
+    Note SelectNote;
     List<Note> NoteList = new List<Note>();
     List<SaveNote> SaveNoteList = new List<SaveNote>();
     private List<Vector2> VNL_Pos = new List<Vector2>();
@@ -54,6 +59,7 @@ public class LineSCR : MonoBehaviour
     public GameObject P;
     string filepath;
     public Chart data;
+    string[] Colorstr = new string[] { "#79A3B9", "#FF8888" };
     private void Awake()
     {
         Debug.Log("LineSCR.cs awaked.");
@@ -83,24 +89,30 @@ public class LineSCR : MonoBehaviour
             float posX = LinePosX[note.NoteX];
             float posY = LinePosY[note.NoteY - _NowNum0];
             Vector2 pos = new Vector2(posX, posY);
-            Draw(pos, note.NObj);
+            Draw(pos, note.NObj, note.NoteMode);
         }
     }
-    void Draw(Vector2 VNL_Pos,UnityEngine.UI.Image NO)
+    void Draw(Vector2 VNL_Pos,UnityEngine.UI.Image NO, int Mode)
     {
+        Color Notemodecolor;
+        UnityEngine.ColorUtility.TryParseHtmlString(Colorstr[Mode], out Notemodecolor);
         NO.rectTransform.anchoredPosition = VNL_Pos;
         NO.rectTransform.sizeDelta = new Vector2(47, 10);
+        NO.color = Notemodecolor;
     }
-    public void AddN(Vector2 V)
+    public void AddN(Vector2 V, int Mode)
     {
+        Color Notemodecolor;
+        UnityEngine.ColorUtility.TryParseHtmlString(Colorstr[Mode], out Notemodecolor);
         float posX = LinePosX[(int)V.x];
         float posY = LinePosY[(int)V.y];
         Vector2 pos = new Vector2(posX, posY);
         UnityEngine.UI.Image Obj = Instantiate(NPrefab, pos, Quaternion.identity);
         Obj.rectTransform.SetParent(P.transform, false);
         Obj.rectTransform.anchoredPosition = pos;
-        NoteList.Add(new Note { NoteX = (int)V.x, NoteY = (int)V.y + _NowNum0, NObj = Obj});
-        SaveNoteList.Add(new SaveNote { SNX = (int)V.x, SNY = ((int)V.y + _NowNum0) * ChartCalculator.TPL });
+        Obj.color = Notemodecolor;
+        NoteList.Add(new Note { NoteX = (int)V.x, NoteY = (int)V.y + _NowNum0, NObj = Obj, NoteMode = Mode});
+        SaveNoteList.Add(new SaveNote { SNX = (int)V.x, SNY = ((int)V.y + _NowNum0) * ChartCalculator.TPL , SNM = Mode});
     }
     void Save(List<SaveNote> Nls)
     {
@@ -139,4 +151,28 @@ public class LineSCR : MonoBehaviour
     {
         Save(SaveNoteList);
     }
+
+    public void NoteButton(int X, int Y)
+    {
+        Vector2 BV2 = new Vector2(X, Y);
+        SelectNote = NoteList.Find(Nf => Nf.NoteX == X && Nf.NoteY == Y + _NowNum0);
+        if (SelectNote != null)
+        {
+            Notesmode = SelectNote.NoteMode;
+            SelectNote.NObj.AddComponent<Outline>();
+            Outline outline = SelectNote.NObj.GetComponent<Outline>();//ここから開発はじめる。選択されたノーツにアウトラインをつける
+        }
+        else
+        {
+            AddN(BV2, Notesmode);
+        }
+    }
+    public void Notemodechange(int mode)     
+    {
+        if (SelectNote != null)
+        {
+            SelectNote.NoteMode = mode;
+        }
+    }
+    
 }

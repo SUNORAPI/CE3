@@ -83,8 +83,7 @@ public class MusicButton : MonoBehaviour
     }
     public void NotesBV2() 
     {
-        Vector2 BV2 = new Vector2(_BX,_BY);
-        L.AddN(BV2);
+        L.NoteButton(_BX, _BY);
     }
 
     private void Update()
@@ -114,5 +113,11 @@ public class MusicButton : MonoBehaviour
     public void sliderchanged()
     {
         audioSource.time = Length * slider.value;
+    }
+
+    public void NoteMode(int m)
+    {
+        LineSCR.Notesmode = m;// 0:lower 1:upper
+        L.Notemodechange(m);
     }
 }
