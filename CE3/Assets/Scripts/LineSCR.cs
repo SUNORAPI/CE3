@@ -154,13 +154,22 @@ public class LineSCR : MonoBehaviour
 
     public void NoteButton(int X, int Y)
     {
+        if(SelectNote != null)
+        {
+            Outline outline = SelectNote.NObj.GetComponent<Outline>();
+            Destroy(outline);
+        }
+        SelectNote = null;
         Vector2 BV2 = new Vector2(X, Y);
         SelectNote = NoteList.Find(Nf => Nf.NoteX == X && Nf.NoteY == Y + _NowNum0);
         if (SelectNote != null)
         {
+            Debug.Log(SelectNote.ToString());
             Notesmode = SelectNote.NoteMode;
             SelectNote.NObj.AddComponent<Outline>();
-            Outline outline = SelectNote.NObj.GetComponent<Outline>();//ここから開発はじめる。選択されたノーツにアウトラインをつける
+            Outline outline = SelectNote.NObj.GetComponent<Outline>();
+            outline.effectColor = Color.yellow;
+            outline.effectDistance = new Vector2(4, 4);
         }
         else
         {
