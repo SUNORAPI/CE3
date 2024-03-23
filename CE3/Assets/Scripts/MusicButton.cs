@@ -13,6 +13,8 @@ public class MusicButton : MonoBehaviour
     [SerializeField] public GameObject Wdp1btn;
     [SerializeField] public GameObject Wdm1btn;
     [SerializeField] public GameObject WdT;
+    [SerializeField] public GameObject NowWidthT;
+    TextMeshProUGUI nwt;
     public AudioSource audioSource;
     public Slider slider;
     public TextMeshProUGUI PauseBT;
@@ -28,6 +30,7 @@ public class MusicButton : MonoBehaviour
     string[] Colorstr = new string[] { "#00BFFF", "#FF1493" };
     private void Start()
     {
+        nwt = NowWidthT.GetComponent<TextMeshProUGUI>();
         Length = audioSource.clip.length;
         L=K.GetComponent<LineSCR>();
     }
@@ -97,7 +100,9 @@ public class MusicButton : MonoBehaviour
             Wdp1btn.SetActive(false);
             Wdm1btn.SetActive(false);
             WdT.SetActive(false);
+            NowWidthT.SetActive(false);
         }
+        nwt.text = LineSCR.Noteslength.ToString();
     }
     public void MusicStart()
     {
