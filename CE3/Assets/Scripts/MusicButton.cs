@@ -10,6 +10,9 @@ public class MusicButton : MonoBehaviour
     [SerializeField] public GameObject M5;
     [SerializeField] public GameObject Lwbtn;
     [SerializeField] public GameObject Upbtn;
+    [SerializeField] public GameObject Wdp1btn;
+    [SerializeField] public GameObject Wdm1btn;
+    [SerializeField] public GameObject WdT;
     public AudioSource audioSource;
     public Slider slider;
     public TextMeshProUGUI PauseBT;
@@ -73,6 +76,27 @@ public class MusicButton : MonoBehaviour
         {
             M1.SetActive(false);
             M5.SetActive(false);
+        }
+        if(LineSCR.Noteslength < LineSCR.mlen && LineSCR.Noteslength > 1 && LineSCR.Isselecting)
+        {
+            Wdp1btn.SetActive(true);
+            Wdm1btn.SetActive(true);
+        }
+        else if(LineSCR.Noteslength >= LineSCR.mlen && LineSCR.Isselecting)
+        {
+            Wdp1btn.SetActive(false);
+            Wdm1btn.SetActive(true) ;
+        }
+        else if(LineSCR.Noteslength <= 1 && LineSCR.Isselecting)
+        {
+            Wdp1btn.SetActive(true);
+            Wdm1btn.SetActive(false);
+        }
+        else
+        {
+            Wdp1btn.SetActive(false);
+            Wdm1btn.SetActive(false);
+            WdT.SetActive(false);
         }
     }
     public void MusicStart()
@@ -144,5 +168,10 @@ public class MusicButton : MonoBehaviour
     {
         LineSCR.Notesmode = m;// 0:lower 1:upper
         L.Notemodechange(m);
+    }
+    public void NoteWidth(int w)
+    {
+        LineSCR.Noteslength += w;
+        L.Notewidthchange(w);
     }
 }

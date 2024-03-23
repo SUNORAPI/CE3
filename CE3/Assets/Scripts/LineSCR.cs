@@ -30,6 +30,7 @@ public class Chart
 public class SaveNote
 {
     public int SNM;
+    public int SNL;
     public int SNX;
     public float SNY;
 }
@@ -38,6 +39,7 @@ class Note
     public int NoteX;
     public int NoteY;
     public int NoteMode;
+    public int NoteLength;
     public UnityEngine.UI.Image NObj;
 }
 
@@ -46,10 +48,13 @@ public class LineSCR : MonoBehaviour
 {
     public static int[] LinePosY = new[] { -200, -150, -100, -50, 0, 50, 100, 150, 200 };
     public static int[] LinePosX = new[] {-382 ,-335, -288, -241, -194, -147, -100, -53, -6, 41, 88, 135, 182, 229, 276, 323};
+    public static int[] Maxlength = new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 7, 6, 5, 4, 3, 2, 1 };
     public static int Notesmode;
+    public static int Noteslength;
+    public static int mlen;
+    public static bool Isselecting;
     private int _NowNum0;
     private int _LaneNum;
-    private int _NoteLength;
     private int _NoteType;
     private int[] _LineNum = new int[9];
     Note SelectNote;
@@ -61,6 +66,9 @@ public class LineSCR : MonoBehaviour
     string filepath;
     public Chart data;
     string[] Colorstr = new string[] { "#00BFFF", "#FF1493" };
+    public GameObject WP1;
+    public GameObject WM1;
+    public GameObject WST;
     private void Awake()
     {
         Debug.Log("LineSCR.cs awaked.");
@@ -90,26 +98,26 @@ public class LineSCR : MonoBehaviour
             float posX = LinePosX[note.NoteX];
             float posY = LinePosY[note.NoteY - _NowNum0];
             Vector2 pos = new Vector2(posX, posY);
-            Draw(pos, note.NObj, note.NoteMode);
+            Draw(pos, note.NObj, note.NoteMode, note.NoteLength);
         }
         foreach (var notnote in NonVNL)
         {
             UnDraw(notnote.NObj);
         }
     }
-    void Draw(Vector2 VNL_Pos,UnityEngine.UI.Image NO, int Mode)
+    void Draw(Vector2 VNL_Pos,UnityEngine.UI.Image NO, int Mode, int Width)
     {
         Color Notemodecolor;
         UnityEngine.ColorUtility.TryParseHtmlString(Colorstr[Mode], out Notemodecolor);
         NO.rectTransform.anchoredPosition = VNL_Pos;
-        NO.rectTransform.sizeDelta = new Vector2(47, 10);
+        NO.rectTransform.sizeDelta = new Vector2(47 * Width * 2, 10);
         NO.color = Notemodecolor;
     }
     void UnDraw(UnityEngine.UI.Image NtN)
     {
         NtN.color = Color.clear;
     }
-    public void AddN(Vector2 V, int Mode)
+    public void AddN(Vector2 V, int Mode, int Width)
     {
         Color Notemodecolor;
         UnityEngine.ColorUtility.TryParseHtmlString(Colorstr[Mode], out Notemodecolor);
@@ -120,7 +128,7 @@ public class LineSCR : MonoBehaviour
         Obj.rectTransform.SetParent(P.transform, false);
         Obj.rectTransform.anchoredPosition = pos;
         Obj.color = Notemodecolor;
-        NoteList.Add(new Note { NoteX = (int)V.x, NoteY = (int)V.y + _NowNum0, NObj = Obj, NoteMode = Mode});
+        NoteList.Add(new Note { NoteX = (int)V.x, NoteY = (int)V.y + _NowNum0, NObj = Obj, NoteMode = Mode, NoteLength = Width});
     }
     void Save()
     {
@@ -132,7 +140,7 @@ public class LineSCR : MonoBehaviour
         SaveNoteList.Clear();
         foreach (Note note in NoteList)
         {
-            SaveNoteList.Add(new SaveNote { SNX = note.NoteX, SNY = note.NoteY * ChartCalculator.TPL, SNM = note.NoteMode });
+            SaveNoteList.Add(new SaveNote { SNX = note.NoteX, SNY = note.NoteY * ChartCalculator.TPL, SNM = note.NoteMode ,SNL = note.NoteLength});
         }
         if (SaveNoteList != null)
         {
@@ -173,11 +181,19 @@ public class LineSCR : MonoBehaviour
             Destroy(outline);
         }
         SelectNote = null;
+        Isselecting = false;
+        Noteslength = 1;
         Vector2 BV2 = new Vector2(X, Y);
         SelectNote = NoteList.Find(Nf => Nf.NoteX == X && Nf.NoteY == Y + _NowNum0);
         if (SelectNote != null)
         {
+            Isselecting = true;
+            WP1.SetActive(true);
+            WM1.SetActive(true);
+            WST.SetActive(true);
             Notesmode = SelectNote.NoteMode;
+            Noteslength = SelectNote.NoteLength;
+            mlen = Maxlength[SelectNote.NoteX];
             SelectNote.NObj.AddComponent<Outline>();
             Outline outline = SelectNote.NObj.GetComponent<Outline>();
             outline.effectColor = Color.yellow;
@@ -185,7 +201,10 @@ public class LineSCR : MonoBehaviour
         }
         else
         {
-            AddN(BV2, Notesmode);
+            WP1.SetActive (false);
+            WM1.SetActive (false);
+            WST.SetActive (false);
+            AddN(BV2, Notesmode, Noteslength);
         }
     }
     public void Notemodechange(int mode)     
@@ -195,5 +214,14 @@ public class LineSCR : MonoBehaviour
             SelectNote.NoteMode = mode;
         }
     }
-    
+    public void Notewidthchange(int width)
+    {
+        if (SelectNote != null)
+        {
+            if(SelectNote.NoteLength <= mlen)
+            {
+                SelectNote.NoteLength += width;
+            }
+        }
+    }
 }
