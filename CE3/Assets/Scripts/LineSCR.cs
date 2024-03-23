@@ -14,6 +14,7 @@ using static UnityEditor.PlayerSettings;
 using UnityEditorInternal;
 using System.IO;
 using JetBrains.Annotations;
+using Image = UnityEngine.UI.Image;
 
 [System.Serializable]
 public class Chart
@@ -91,6 +92,10 @@ public class LineSCR : MonoBehaviour
             Vector2 pos = new Vector2(posX, posY);
             Draw(pos, note.NObj, note.NoteMode);
         }
+        foreach (var notnote in NonVNL)
+        {
+            UnDraw(notnote.NObj);
+        }
     }
     void Draw(Vector2 VNL_Pos,UnityEngine.UI.Image NO, int Mode)
     {
@@ -99,6 +104,10 @@ public class LineSCR : MonoBehaviour
         NO.rectTransform.anchoredPosition = VNL_Pos;
         NO.rectTransform.sizeDelta = new Vector2(47, 10);
         NO.color = Notemodecolor;
+    }
+    void UnDraw(UnityEngine.UI.Image NtN)
+    {
+        NtN.color = Color.clear;
     }
     public void AddN(Vector2 V, int Mode)
     {
