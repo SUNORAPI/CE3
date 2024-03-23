@@ -59,7 +59,7 @@ public class LineSCR : MonoBehaviour
     public GameObject P;
     string filepath;
     public Chart data;
-    string[] Colorstr = new string[] { "#79A3B9", "#FF8888" };
+    string[] Colorstr = new string[] { "#00BFFF", "#FF1493" };
     private void Awake()
     {
         Debug.Log("LineSCR.cs awaked.");
@@ -112,18 +112,22 @@ public class LineSCR : MonoBehaviour
         Obj.rectTransform.anchoredPosition = pos;
         Obj.color = Notemodecolor;
         NoteList.Add(new Note { NoteX = (int)V.x, NoteY = (int)V.y + _NowNum0, NObj = Obj, NoteMode = Mode});
-        SaveNoteList.Add(new SaveNote { SNX = (int)V.x, SNY = ((int)V.y + _NowNum0) * ChartCalculator.TPL , SNM = Mode});
     }
-    void Save(List<SaveNote> Nls)
+    void Save()
     {
         data.Title = SetInput.Title;
         data.Composer = SetInput.Composer;
         data.ChartMaker = SetInput.ChartMaker;
         data.BPM = SetInput.BPM;
         data.Level = SetInput.Level;
-        if (Nls != null)
+        SaveNoteList.Clear();
+        foreach (Note note in NoteList)
         {
-            data.Notes = Nls;
+            SaveNoteList.Add(new SaveNote { SNX = note.NoteX, SNY = note.NoteY * ChartCalculator.TPL, SNM = note.NoteMode });
+        }
+        if (SaveNoteList != null)
+        {
+            data.Notes = SaveNoteList;
         }
         string json = JsonUtility.ToJson(data);
         using (StreamWriter Swr = new StreamWriter(filepath, false))
@@ -149,7 +153,7 @@ public class LineSCR : MonoBehaviour
     }
     public void Savebtn()
     {
-        Save(SaveNoteList);
+        Save();
     }
 
     public void NoteButton(int X, int Y)
@@ -164,7 +168,6 @@ public class LineSCR : MonoBehaviour
         SelectNote = NoteList.Find(Nf => Nf.NoteX == X && Nf.NoteY == Y + _NowNum0);
         if (SelectNote != null)
         {
-            Debug.Log(SelectNote.ToString());
             Notesmode = SelectNote.NoteMode;
             SelectNote.NObj.AddComponent<Outline>();
             Outline outline = SelectNote.NObj.GetComponent<Outline>();

@@ -22086,6 +22086,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   M1: {fileID: 350386072}
   M5: {fileID: 980738654}
+  Lwbtn: {fileID: 1978105471}
+  Upbtn: {fileID: 1024174555}
   audioSource: {fileID: 1578274326}
   slider: {fileID: 1057049312}
   PauseBT: {fileID: 146999059}

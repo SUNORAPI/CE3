@@ -8,6 +8,8 @@ public class MusicButton : MonoBehaviour
 {
     [SerializeField] public GameObject M1;
     [SerializeField] public GameObject M5;
+    [SerializeField] public GameObject Lwbtn;
+    [SerializeField] public GameObject Upbtn;
     public AudioSource audioSource;
     public Slider slider;
     public TextMeshProUGUI PauseBT;
@@ -20,12 +22,59 @@ public class MusicButton : MonoBehaviour
     private int _BX;
     private int _BY;
     public static int NNUM;
+    string[] Colorstr = new string[] { "#00BFFF", "#FF1493" };
     private void Start()
     {
         Length = audioSource.clip.length;
         L=K.GetComponent<LineSCR>();
     }
 
+    private void Update()
+    {
+        Color Btc;
+        UnityEngine.ColorUtility.TryParseHtmlString(Colorstr[LineSCR.Notesmode], out Btc);
+        if (LineSCR.Notesmode == 0)
+        {
+            Button Lb = Lwbtn.GetComponent<Button>();
+            Button Ub = Upbtn.GetComponent<Button>();
+            Lb.image.color = Btc;
+            Ub.image.color = Color.white;
+        }
+        else if(LineSCR.Notesmode == 1)
+        {
+            Button Lb = Lwbtn.GetComponent<Button>();
+            Button Ub = Upbtn.GetComponent<Button>();
+            Lb.image.color = Color.white;
+            Ub.image.color = Btc;
+        }
+        else 
+        {
+            Button Lb = Lwbtn.GetComponent<Button>();
+            Button Ub = Upbtn.GetComponent<Button>();
+            Lb.image.color = Color.white;
+            Ub.image.color = Color.white;
+        }
+        NowMusicTime = audioSource.time;
+        slider.value = audioSource.time / Length;
+        SliderValue = slider.value;
+        if (NNUM >= 1)
+        {
+            M1.SetActive(true);
+            if (NNUM >= 5)
+            {
+                M5.SetActive(true);
+            }
+            else
+            {
+                M5.SetActive(false);
+            }
+        }
+        else
+        {
+            M1.SetActive(false);
+            M5.SetActive(false);
+        }
+    }
     public void MusicStart()
     {
         audioSource.Play();
@@ -84,30 +133,6 @@ public class MusicButton : MonoBehaviour
     public void NotesBV2() 
     {
         L.NoteButton(_BX, _BY);
-    }
-
-    private void Update()
-    {
-        NowMusicTime = audioSource.time;
-        slider.value = audioSource.time / Length;
-        SliderValue = slider.value;
-        if (NNUM >= 1) 
-        {
-            M1.SetActive(true);
-            if (NNUM >= 5)
-            {
-                M5.SetActive(true);
-            }
-            else
-            {
-                M5.SetActive(false);
-            }
-        }
-        else
-        {
-            M1.SetActive(false);
-            M5.SetActive(false);
-        }
     }
 
     public void sliderchanged()
