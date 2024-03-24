@@ -227,4 +227,16 @@ public class LineSCR : MonoBehaviour
             }
         }
     }
+    public void NoteRemove()
+    {
+        if(SelectNote != null)
+        {
+            Noteslength = 1;
+            SelectNote.NoteLength = 1;
+            Isselecting = false;
+            Destroy(SelectNote.NObj);
+            NoteList.Remove(SelectNote);
+            SelectNote = null;
+        }
+    }
 }
