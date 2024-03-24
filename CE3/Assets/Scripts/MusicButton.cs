@@ -14,6 +14,7 @@ public class MusicButton : MonoBehaviour
     [SerializeField] public GameObject Wdm1btn;
     [SerializeField] public GameObject WdT;
     [SerializeField] public GameObject NowWidthT;
+    [SerializeField] public GameObject Delbtn;
     TextMeshProUGUI nwt;
     public AudioSource audioSource;
     public Slider slider;
@@ -101,6 +102,7 @@ public class MusicButton : MonoBehaviour
             Wdm1btn.SetActive(false);
             WdT.SetActive(false);
             NowWidthT.SetActive(false);
+            Delbtn.SetActive(false);
         }
         nwt.text = LineSCR.Noteslength.ToString();
     }

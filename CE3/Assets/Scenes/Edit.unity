@@ -22421,6 +22421,7 @@ MonoBehaviour:
   Wdm1btn: {fileID: 602490237}
   WdT: {fileID: 41939239}
   NowWidthT: {fileID: 1639381804}
+  Delbtn: {fileID: 1475840541}
   audioSource: {fileID: 1578274326}
   slider: {fileID: 1057049312}
   PauseBT: {fileID: 146999059}
@@ -22462,6 +22463,7 @@ MonoBehaviour:
   WM1: {fileID: 602490237}
   WST: {fileID: 41939239}
   WVT: {fileID: 1639381804}
+  DLB: {fileID: 1475840541}
 --- !u!1 &1578958527
 GameObject:
   m_ObjectHideFlags: 0

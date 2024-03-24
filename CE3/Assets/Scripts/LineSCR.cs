@@ -70,6 +70,7 @@ public class LineSCR : MonoBehaviour
     public GameObject WM1;
     public GameObject WST;
     public GameObject WVT;
+    public GameObject DLB;
     private void Awake()
     {
         Debug.Log("LineSCR.cs awaked.");
@@ -193,6 +194,7 @@ public class LineSCR : MonoBehaviour
             WM1.SetActive(true);
             WST.SetActive(true);
             WVT.SetActive(true);
+            DLB.SetActive(true);
             Notesmode = SelectNote.NoteMode;
             Noteslength = SelectNote.NoteLength;
             mlen = Maxlength[SelectNote.NoteX];
@@ -207,6 +209,7 @@ public class LineSCR : MonoBehaviour
             WM1.SetActive (false);
             WST.SetActive (false);
             WVT.SetActive(false);
+            DLB.SetActive(false);
             AddN(BV2, Notesmode, Noteslength);
         }
     }
